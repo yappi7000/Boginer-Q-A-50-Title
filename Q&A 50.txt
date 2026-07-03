@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MNP初心者向け Q&A ベスト50</title>
+<style>
+  :root{
+    --bg: #ffffff;
+    --card-bg: #ffffff;
+    --card-border: #d6e0f0;
+    --blue: #1a5fd0;
+    --blue-soft: #3b7de0;
+    --blue-pale: #eaf1fd;
+    --text-main: #111111;
+    --text-sub: #4a5568;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:32px 12px 80px;
+    background:var(--bg);
+    color:var(--text-main);
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    line-height:1.7;
+  }
+  .header-box{
+    max-width:720px;
+    margin:0 auto 28px;
+    padding:28px 20px 22px;
+    border:2px solid var(--blue);
+    border-radius:16px;
+    background:linear-gradient(180deg, var(--blue-pale) 0%, #ffffff 70%);
+    text-align:center;
+    position:relative;
+  }
+  .header-box::before{
+    content:"";
+    position:absolute;
+    top:8px; left:8px; right:8px; bottom:8px;
+    border:1px solid rgba(26,95,208,.25);
+    border-radius:10px;
+    pointer-events:none;
+  }
+  h1{
+    font-size:1.5rem;
+    margin:0 0 10px;
+    color:var(--blue);
+    letter-spacing:.02em;
+    font-weight:800;
+  }
+  .subtitle{
+    color:var(--text-sub);
+    font-size:.85rem;
+    margin-bottom:6px;
+  }
+  .author{
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 16px;
+    border:1px solid var(--blue-soft);
+    border-radius:999px;
+    color:var(--blue);
+    font-size:.8rem;
+    font-weight:700;
+    background:#ffffff;
+  }
+  .qa-list{
+    max-width:720px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .qa-item{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:12px;
+    overflow:hidden;
+    transition:border-color .2s ease;
+  }
+  .qa-item.open{
+    border-color:var(--blue-soft);
+  }
+  .qa-question{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:16px 18px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .qa-badge{
+    flex:0 0 auto;
+    font-size:.7rem;
+    color:#ffffff;
+    background:var(--blue);
+    font-weight:700;
+    padding:3px 8px;
+    border-radius:6px;
+    letter-spacing:.03em;
+  }
+  .qa-question-text{
+    flex:1 1 auto;
+    font-size:.95rem;
+    font-weight:600;
+    color:var(--text-main);
+  }
+  .qa-icon{
+    flex:0 0 auto;
+    width:20px;
+    height:20px;
+    position:relative;
+    transition:transform .25s ease;
+  }
+  .qa-icon::before,.qa-icon::after{
+    content:"";
+    position:absolute;
+    background:var(--blue);
+    border-radius:2px;
+  }
+  .qa-icon::before{
+    width:100%;
+    height:2px;
+    top:9px; left:0;
+  }
+  .qa-icon::after{
+    width:2px;
+    height:100%;
+    left:9px; top:0;
+    transition:opacity .2s ease;
+  }
+  .qa-item.open .qa-icon{
+    transform:rotate(180deg);
+  }
+  .qa-item.open .qa-icon::after{
+    opacity:0;
+  }
+  .qa-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    padding:0 18px;
+  }
+  .qa-item.open .qa-answer{
+    max-height:2000px;
+    padding:0 18px 18px;
+  }
+  .answer-conclusion{
+    background:var(--blue-pale);
+    border-left:3px solid var(--blue);
+    padding:10px 14px;
+    border-radius:6px;
+    font-weight:600;
+    font-size:.9rem;
+    margin-bottom:12px;
+    color:var(--text-main);
+  }
+  .answer-conclusion span{
+    color:var(--blue);
+    font-size:.75rem;
+    display:block;
+    margin-bottom:4px;
+    font-weight:700;
+    letter-spacing:.05em;
+  }
+  .answer-points{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .answer-points li{
+    font-size:.85rem;
+    color:var(--text-sub);
+    padding-left:1.3em;
+    position:relative;
+  }
+  .answer-points li::before{
+    content:"・";
+    position:absolute;
+    left:0;
+    color:var(--blue-soft);
+  }
+  .answer-points li b{
+    color:var(--text-main);
+  }
+  .footer-note{
+    max-width:720px;
+    margin:32px auto 0;
+    text-align:center;
+    font-size:.75rem;
+    color:var(--text-sub);
+  }
+  .footer-author{
+    max-width:720px;
+    margin:14px auto 0;
+    text-align:center;
+    font-size:.8rem;
+    font-weight:700;
+    color:var(--blue);
+  }
+</style>
+</head>
+<body>
+
+<div class="header-box">
+  <h1>MNP上級者向け Q&amp;A ベスト50</h1>
+  <div class="subtitle">タップすると回答が開きます</div>
+  <div class="author">やっぴ〜＠MNP×クレカの戦略家（＠8p_thankyou）</div>
+</div>
+
+<div class="qa-list" id="qaList"></div>
+
+<div class="footer-note">クリックで開閉 / 全50問</div>
+<div class="footer-author">やっぴ〜＠MNP×クレカの戦略家（＠8p_thankyou）</div>
+
+<script>
+const qaData = [
+  {
+    id: "Q1-1",
+    question: `MNP予約番号を発行しただけで料金は発生しますか？`,
+    conclusion: `通常の予約番号であれば、即時解約にはならず1ヶ月分の料金が発生します。`,
+    points: [
+      { label: "理由", text: `切断型予約番号ではない限り、発番しただけでは回線は維持されるためです。` },
+      { label: "数字", text: `1ヶ月分の料金。` }
+    ]
+  },
+  {
+    id: "Q1-2",
+    question: `予約番号の有効期間はどれくらいですか？`,
+    conclusion: `15日間です。`,
+    points: [
+      { label: "理由", text: `キャリアが規定する予約番号の有効期限であるためです。` },
+      { label: "数字", text: `15日間。` }
+    ]
+  },
+  {
+    id: "Q1-3",
+    question: `UQモバイルに切断型の予約番号はありますか？`,
+    conclusion: `ありません。`,
+    points: [
+      { label: "理由", text: `オペレーターへの確認により、UQには存在しないと回答されているためです。` },
+      { label: "数字", text: `0（存在しない）。` }
+    ]
+  },
+  {
+    id: "Q1-4",
+    question: `解約新規や同月CB履歴があるとどうなりますか？`,
+    conclusion: `案件によっては契約不可やCB対象外になります。`,
+    points: [
+      { label: "理由", text: `ショップ案件（例：アテナ案件015）の条件で「当月CB履歴ある場合は不可」と明記されている場合があるためです。` },
+      { label: "数字", text: `同月（同じ月内）。` }
+    ]
+  },
+  {
+    id: "Q1-5",
+    question: `初心者が質問する際に気をつけることは何ですか？`,
+    conclusion: `前提条件をより具体的に伝えることです。`,
+    points: [
+      { label: "理由", text: `どのお店か、CB条件、これまでの経緯などが分からないと周りが回答しにくいためです。` },
+      { label: "数字", text: `3つ以上の前提（店・条件・経緯など）。` }
+    ]
+  },
+  {
+    id: "Q1-6",
+    question: `1dayなどの紹介活動を始める前にやるべきことは何ですか？`,
+    conclusion: `主だった全キャリアを自分や家族で少しずつ契約して経験することです。`,
+    points: [
+      { label: "理由", text: `量販店のルール（1回線1利用者など）を経験せず紹介を出すと、トラブル（自爆）の元になるためです。` },
+      { label: "数字", text: `1回線1利用者、全キャリアの経験。` }
+    ]
+  },
+  {
+    id: "Q1-7",
+    question: `初心者が疑問に思った時はまずどこで調べるべきですか？`,
+    conclusion: `キャリアルールの教材を確認し、アテナAIちゃんに質問します。`,
+    points: [
+      { label: "理由", text: `基礎知識がない状態で手当たり次第に質問すると、内容が噛み合わず失敗するリスクがあるためです。` },
+      { label: "数字", text: `2つの手段（教材、AI質問）。` }
+    ]
+  },
+  {
+    id: "Q1-8",
+    question: `自分で何回線もMNPを何度もやった経験があれば、家族回線も簡単にできますか？`,
+    conclusion: `注意が必要です。教材やルールを一通り頭に入れる必要があります。`,
+    points: [
+      { label: "理由", text: `家族回線特有のルール（利用者登録や名義の扱い）を誤ると契約が通らないためです。` },
+      { label: "数字", text: `1から教材を学び直す。` }
+    ]
+  },
+  {
+    id: "Q1-9",
+    question: `乗り換えを急ぎたいが、火力が弱い時期（iPhone発売前など）はどうすべきですか？`,
+    conclusion: `利益が出にくいため、ホームルーターなどと組み合わせるか、教材で知識を蓄えるべきです。`,
+    points: [
+      { label: "理由", text: `施策が弱い時期に無理に動いても、手間の割に利益が出ないためです。` },
+      { label: "数字", text: `1つ（iPhone発売前の時期）。` }
+    ]
+  },
+  {
+    id: "Q1-10",
+    question: `夫婦で乗り換える際、どちらか片方だけが店舗に行けば契約できますか？`,
+    conclusion: `原則、本人も一緒に行った方が良いです。`,
+    points: [
+      { label: "理由", text: `委任状のルールや契約者名義の確認を正しく行う必要があるためです。` },
+      { label: "数字", text: `2人揃っての来店が基本。` }
+    ]
+  },
+  {
+    id: "Q2-1",
+    question: `家族の利用者登録は何歳から可能ですか？`,
+    conclusion: `ドコモは0歳から、他キャリアは基本5歳からですが緩和傾向にあります。`,
+    points: [
+      { label: "理由", text: `キャリアや代理店によって基準が異なるためです。` },
+      { label: "数字", text: `0歳（ドコモ）、5歳以上（その他）。` }
+    ]
+  },
+  {
+    id: "Q2-2",
+    question: `住民票単独で本人確認書類として使用できますか？`,
+    conclusion: `使用できません。`,
+    points: [
+      { label: "理由", text: `住民票単独では不可というルールがあるためです。` },
+      { label: "数字", text: `1枚（単独では不可）。` }
+    ]
+  },
+  {
+    id: "Q2-3",
+    question: `戸籍謄本単独で本人確認書類になりますか？`,
+    conclusion: `認められません。`,
+    points: [
+      { label: "理由", text: `本人確認書類としては使用できないルールになっているためです。` },
+      { label: "数字", text: `0（不可）。` }
+    ]
+  },
+  {
+    id: "Q2-4",
+    question: `住所が異なる3親等以内の家族を利用者登録できますか？`,
+    conclusion: `可能です。`,
+    points: [
+      { label: "理由", text: `戸籍謄本と身分証明書を用意すれば、お店側で読み込み・確認ができるためです。` },
+      { label: "数字", text: `3親等以内。` }
+    ]
+  },
+  {
+    id: "Q2-5",
+    question: `家族確認書類として使えるのは「戸籍謄本」だけですか？`,
+    conclusion: `戸籍抄本や除籍謄本など、家族関係（契約者と使用者）が記載された書類であれば大丈夫です。`,
+    points: [
+      { label: "理由", text: `最終的に「家族であることの血縁・関係証明」ができれば問題ないためです。` },
+      { label: "数字", text: `3種類以上の書類（謄本、抄本、除籍謄本など）。` }
+    ]
+  },
+  {
+    id: "Q2-6",
+    question: `同一住所・同一苗字の妹の免許証原本があれば、住民票や戸籍謄本なしでワイモバイルの利用者登録はできますか？`,
+    conclusion: `確認できません。（ログ内で質問が上がりましたが回答が途絶えています）`,
+    points: [
+      { label: "理由", text: `明確な回答がチャット内に残っていないためです。` },
+      { label: "数字", text: `0（回答なし）` }
+    ]
+  },
+  {
+    id: "Q2-7",
+    question: `60歳以上の親をワイモバイルの利用者に登録する際、親子関係を証明できる戸籍謄本があれば親の身分証明書は不要ですか？`,
+    conclusion: `確認できません。（こちらもログ内で回答がありません）`,
+    points: [
+      { label: "理由", text: `チャット上に確証となる返信が記録されていないためです。` },
+      { label: "数字", text: `0（回答なし）` }
+    ]
+  },
+  {
+    id: "Q2-8",
+    question: `ヤマダ電機（YS）で利用者の本人確認書類として住民票は使えますか？`,
+    conclusion: `最新のルールとして住民票でOKです。`,
+    points: [
+      { label: "理由", text: `講師および運営より「OKですよ」と回答されているためです。` },
+      { label: "数字", text: `1種類（住民票で対応可能）。` }
+    ]
+  },
+  {
+    id: "Q2-9",
+    question: `ドコモで家族の回線を代わりに契約することはできますか？`,
+    conclusion: `委任状を使えば代理人での受付が可能です。`,
+    points: [
+      { label: "理由", text: `ドコモに限り、委任状による家族の代理契約が認められているためです。` },
+      { label: "数字", text: `1つの例外（ドコモは委任状OK）。` }
+    ]
+  },
+  {
+    id: "Q2-10",
+    question: `平日に子供の委任状を使ってドコモを契約できますか？`,
+    conclusion: `可能です。`,
+    points: [
+      { label: "理由", text: `ドコモは委任状があれば代理人受付が可能であるためです。` },
+      { label: "数字", text: `1人（本人不在でも可）。` }
+    ]
+  },
+  {
+    id: "Q3-1",
+    question: `家電量販店のMNP維持期間ルールは何日が目安ですか？`,
+    conclusion: `一般的に91日ルールと言われています。`,
+    points: [
+      { label: "理由", text: `多くの量販店での基準とされているためです。` },
+      { label: "数字", text: `91日。` }
+    ]
+  },
+  {
+    id: "Q3-2",
+    question: `量販店でもらえるポイントは即日付与されますか？`,
+    conclusion: `基本的には即日ポイント付与される場合がほとんどです。`,
+    points: [
+      { label: "理由", text: `実際の体験談として、即日以外でもらったことがないという報告があるためです。` },
+      { label: "数字", text: `即日（当日）。` }
+    ]
+  },
+  {
+    id: "Q3-3",
+    question: `店員から「ポイントがなくなるので1年は維持して」と言われたら従うべきですか？`,
+    conclusion: `営業トーク（案内）の可能性があります。基本は即日付与されればなくなりません。`,
+    points: [
+      { label: "理由", text: `特にノジマなどで店員からそのように言われるケースが多いですが、実際は即日付与されているためです。` },
+      { label: "数字", text: `1年間（店員の主張する期間）。` }
+    ]
+  },
+  {
+    id: "Q3-4",
+    question: `ヤマダやノジマ、ジョーシンでは「半年以内のMNPはポイント付与外」と言われるのはなぜですか？`,
+    conclusion: `同じ屋号（同じ量販店グループ）でのポイント付与には期間制限があるためです。`,
+    points: [
+      { label: "理由", text: `同じポイントカードや屋号で短期間に繰り返し特典を受け取ることを防ぐ仕組みがあるためです。` },
+      { label: "数字", text: `半年〜1年。` }
+    ]
+  },
+  {
+    id: "Q3-5",
+    question: `量販店の同一屋号でのポイント付与制限を回避する方法はありますか？`,
+    conclusion: `違う屋号の量販店を利用します。`,
+    points: [
+      { label: "理由", text: `ヤマダ→ノジマというように店舗ブランドを変えれば、ポイントの判定を回避できるためです。` },
+      { label: "数字", text: `別の屋号を利用。` }
+    ]
+  },
+  {
+    id: "Q3-6",
+    question: `ヤマダ電機（YS）でよくある「1回線1利用者」とはどういう意味ですか？`,
+    conclusion: `1つの回線を契約するごとに、それぞれ異なる利用者の登録（身分証）が必要になる縛りです。`,
+    points: [
+      { label: "理由", text: `量販店独自の転売・乱発防止ルールとして設定されていることがあるためです。` },
+      { label: "数字", text: `1回線につき1人。` }
+    ]
+  },
+  {
+    id: "Q3-7",
+    question: `量販店の独自ルールは、ドコモやUQの公式ルールと違いますか？`,
+    conclusion: `違います。`,
+    points: [
+      { label: "理由", text: `キャリア公式（UQやd）ではあまり聞かない厳しい縛りでも、量販店（特にYSなど）の店舗判断で設定されるためです。` },
+      { label: "数字", text: `店舗独自のルール。` }
+    ]
+  },
+  {
+    id: "Q3-8",
+    question: `特典付与（ポイントやCB）が拒否されるのは、キャリアの審査に落ちたからですか？`,
+    conclusion: `無関係です。`,
+    points: [
+      { label: "理由", text: `店舗独自の特典付与基準と、キャリアの契約審査（ブラック判定など）は全く別の基準で動いているためです。` },
+      { label: "数字", text: `2つの異なる審査（店舗基準とキャリア審査）。` }
+    ]
+  },
+  {
+    id: "Q3-9",
+    question: `量販店で「同住所で月4回線まで」という制限はありますか？`,
+    conclusion: `あります。`,
+    points: [
+      { label: "理由", text: `量販店（特にYS）では、同一住所からの過度な契約を防ぐために月間の上限を設けているためです。` },
+      { label: "数字", text: `同一住所で月に4回線まで。` }
+    ]
+  },
+  {
+    id: "Q3-10",
+    question: `現金が手元にない状態で利益を出すには、どんな方法がおすすめですか？`,
+    conclusion: `量販店のポイント付与や家電値引きを活用して、商品を一括購入して売却（現金化）する方法があります。`,
+    points: [
+      { label: "理由", text: `実践例として、ヨドバシ等でポイントと家電値引きを組み合わせてApple Watch等を購入し、買取店に売却して現金化しているためです。` },
+      { label: "数字", text: `数万〜7万円相当のポイント・値引き。` }
+    ]
+  },
+  {
+    id: "Q4-1",
+    question: `BIGLOBEモバイルはドコモへの乗り換え弾として使えますか？`,
+    conclusion: `原則使えますが、案件によっては使えない場合があります。`,
+    points: [
+      { label: "理由", text: `ポケsimを含む「ドコモ系回線NG」という条件の案件では、BIGLOBEのタイプD（ドコモ回線）は弾として弾かれるためです。` },
+      { label: "数字", text: `2つのタイプ（タイプD/タイプA）。` }
+    ]
+  },
+  {
+    id: "Q4-2",
+    question: `エディオンSIMの中身はどこのキャリアですか？`,
+    conclusion: `BIGLOBEです。`,
+    points: [
+      { label: "理由", text: `エディオンSIMの回線インフラはBIGLOBEが提供しているためです。` },
+      { label: "数字", text: `1つ（BIGLOBE系）。` }
+    ]
+  },
+  {
+    id: "Q4-3",
+    question: `エディオンSIMでポイントを貰ってすぐにMNP（即転出）しても大丈夫ですか？`,
+    conclusion: `技術的には可能ですが、しばらく使わない場合を除き、できれば半年は保持した方が良いです。`,
+    points: [
+      { label: "理由", text: `BIGLOBE系回線は短期解約のリスクがあるためです。` },
+      { label: "数字", text: `半年（推奨維持期間）。` }
+    ]
+  },
+  {
+    id: "Q4-4",
+    question: `事務手数料が無料のLINEMOは、速射（即MNP弾にする）に向いていますか？`,
+    conclusion: `おすすめできません。`,
+    points: [
+      { label: "理由", text: `ソフトバンク・ワイモバイル系列の総合ブラックリスクが非常に高くなるためです。` },
+      { label: "数字", text: `0円（手数料）だがリスク大。` }
+    ]
+  },
+  {
+    id: "Q4-5",
+    question: `事務手数料がかかっても、比較的速射に強いおすすめの格安SIMはどこですか？`,
+    conclusion: `mineo（マイネオ）が挙げられます。`,
+    points: [
+      { label: "理由", text: `短期解約（速射）をしても、数ヶ月後にまたすんなり契約を通してくれるという体験談があるためです（ただし自己責任）。` },
+      { label: "数字", text: `数ヶ月（再契約までの期間）。` }
+    ]
+  },
+  {
+    id: "Q4-6",
+    question: `mineoを契約する際、スマホに必要な機能は何ですか？`,
+    conclusion: `NFC対応のスマートフォンが必要です。`,
+    points: [
+      { label: "理由", text: `マイナンバーカードや運転免許証のICチップ読み取りを行うためです。` },
+      { label: "数字", text: `1つの機能（NFC対応）。` }
+    ]
+  },
+  {
+    id: "Q4-7",
+    question: `mineoでお得に申し込む方法はありますか？`,
+    conclusion: `紹介コードなどをよく探すと、事務契約手数料が無料になる場合があります。`,
+    points: [
+      { label: "理由", text: `紹介キャンペーンURL（リンク）等を経由することで特典が適用されるためです。` },
+      { label: "数字", text: `0円（手数料無料化）。` }
+    ]
+  },
+  {
+    id: "Q4-8",
+    question: `mineoの「マイそくスーパーライト」は弾として使えますか？`,
+    conclusion: `事務手数料無料の対象にならない可能性が高いため、おすすめしません。`,
+    points: [
+      { label: "理由", text: `キャンペーン等の規約上、「マイそくライト」などでないと手数料無料の恩恵を受けられないケースがあるためです。` },
+      { label: "数字", text: `1つの注意プラン（スーパーライトは対象外リスク）。` }
+    ]
+  },
+  {
+    id: "Q4-9",
+    question: `リンクスメイト（LinksMate）は弾としておすすめですか？`,
+    conclusion: `おすすめの選択肢の一つです。`,
+    points: [
+      { label: "理由", text: `事務手数料無料で契約できる弾として、名前が挙げられているためです。` },
+      { label: "数字", text: `1つ（推奨格安SIM）。` }
+    ]
+  },
+  {
+    id: "Q4-10",
+    question: `代理店の人から「JCOMモバイルは事務手数料無料で即予約番号が出せるから弾に良い」と勧められましたが信じて良いですか？`,
+    conclusion: `鵜呑みにしてはいけません。短期解約はブラックになる恐れがあり、速射向きではありません。`,
+    points: [
+      { label: "理由", text: `代理店の営業トークであり、実際のブラックリスクは考慮されていないためです。` },
+      { label: "数字", text: `1日（予約番号発行可能でもリスク大）。` }
+    ]
+  },
+  {
+    id: "Q5-1",
+    question: `ルール通りの維持期間を守っていれば、絶対にブラックになりませんか？`,
+    conclusion: `絶対とは言えません。守っていてもブラックになるケースがあります。`,
+    points: [
+      { label: "理由", text: `181日以上維持して解約したにもかかわらず、ワイモバイルで総合ブラックになった実践例があるためです。` },
+      { label: "数字", text: `181日以上維持でもブラックの事例あり。` }
+    ]
+  },
+  {
+    id: "Q5-2",
+    question: `ワイモバイルで「総合ブラック」になるとどうなりますか？`,
+    conclusion: `オンラインショップ等での新規SIM単体申し込み時に、審査落ちのメールが届くようになります。`,
+    points: [
+      { label: "理由", text: `「総合的に審査した結果、契約を見合わせる」という内容で自動的に弾かれるためです。` },
+      { label: "数字", text: `1通の審査落ちメール。` }
+    ]
+  },
+  {
+    id: "Q5-3",
+    question: `ワイモバイルもauやUQのように「解約当月は再契約（新規）できない」というルールはありますか？`,
+    conclusion: `確認できません。（ログ内で質問されましたが、明確な回答がありません）`,
+    points: [
+      { label: "理由", text: `チャット上にこの質問に対する答えが残されていないためです。` },
+      { label: "数字", text: `0（回答なし）` }
+    ]
+  },
+  {
+    id: "Q5-4",
+    question: `光や電気の「空申込（からもうしこみ）」をするとブラックになりますか？`,
+    conclusion: `ルール（維持期間など）を守っていれば、空申込が理由でブラックになることはありません。`,
+    points: [
+      { label: "理由", text: `講師および運営から「空申込が理由でのブラックはない」と回答されているためです。` },
+      { label: "数字", text: `0（リスクなし）。` }
+    ]
+  },
+  {
+    id: "Q5-5",
+    question: `ドコモやワイモバイルをWebから当月解約する場合、何時までに申し込む必要がありますか？`,
+    conclusion: `20時までのところが多いですが、キャリアの公式HPで確定値を確認してください。`,
+    points: [
+      { label: "理由", text: `キャリアごとに締め切り時間が細かく規定されており、プラン変更等も同様だからです。` },
+      { label: "数字", text: `20時（目安）。` }
+    ]
+  },
+  {
+    id: "Q5-6",
+    question: `ワイモバイルの解約申込画面で「明日の9時以降に解約完了」とある場合、費用は当月分だけですか？`,
+    conclusion: `はい、基本的には当月分（6月分など）のみの請求になります。`,
+    points: [
+      { label: "理由", text: `月末のタイミングで手続きが行われていれば、翌日に処理がズレても当月解約扱いとなるためです。` },
+      { label: "数字", text: `9時以降（処理時間）。` }
+    ]
+  },
+  {
+    id: "Q5-7",
+    question: `ドコモで契約時に「預託金（よたくきん）」を求められたらブラックですか？`,
+    conclusion: `ブラックとは関係ありません。`,
+    points: [
+      { label: "理由", text: `同世帯の契約状況や期間などを元にした個別の審査基準により、預託金が必要になるケースがあるためです。` },
+      { label: "数字", text: `0（ブラック判定ではない）。` }
+    ]
+  },
+  {
+    id: "Q5-8",
+    question: `ドコモで預託金を求められた場合、次の審査はいつ頃試すべきですか？`,
+    conclusion: `3ヶ月おきくらいに審査を入れてみると良いです。`,
+    points: [
+      { label: "理由", text: `審査基準がリセット、または変動する目安の期間として講師から推奨されているためです。` },
+      { label: "数字", text: `3ヶ月おき。` }
+    ]
+  },
+  {
+    id: "Q5-9",
+    question: `契約後すぐに動かせない（いわゆる「寝かせ」が必要な）回線はありますか？`,
+    conclusion: `あります。例えば6月に契約・プラン変更したばかりのahamo回線などは動かせません。`,
+    points: [
+      { label: "理由", text: `短期での再移動はブラックリスクが跳ね上がるためです。` },
+      { label: "数字", text: `1回線（動かせない回線の例）。` }
+    ]
+  },
+  {
+    id: "Q5-10",
+    question: `各キャリアの明確なブラック期間や条件はどこかに明記されていますか？`,
+    conclusion: `全キャリアにおいて明確な期間は明記されていません。`,
+    points: [
+      { label: "理由", text: `キャリアの審査基準は非公開であり、私たちが知る目安はすべて「みんなの経験測定（過去のデータ）」からきているためです。` },
+      { label: "数字", text: `0（公式開示なし）。` }
+    ]
+  },
+];
+
+const list = document.getElementById("qaList");
+
+qaData.forEach((qa, i) => {
+  const item = document.createElement("div");
+  item.className = "qa-item";
+
+  const pointsHtml = qa.points.map(p =>
+    `<li><b>${p.label}：</b>${p.text}</li>`
+  ).join("");
+
+  item.innerHTML = `
+    <div class="qa-question" data-index="${i}">
+      <span class="qa-badge">${qa.id}</span>
+      <span class="qa-question-text">${qa.question}</span>
+      <span class="qa-icon"></span>
+    </div>
+    <div class="qa-answer">
+      <div class="answer-conclusion">
+        <span>結論</span>${qa.conclusion}
+      </div>
+      <ul class="answer-points">${pointsHtml}</ul>
+    </div>
+  `;
+  list.appendChild(item);
+});
+
+list.addEventListener("click", (e) => {
+  const q = e.target.closest(".qa-question");
+  if (!q) return;
+  q.closest(".qa-item").classList.toggle("open");
+});
+</script>
+
+</body>
+</html>
+
