@@ -207,7 +207,7 @@
 <body>
 
 <div class="header-box">
-  <h1>MNP上級者向け Q&amp;A ベスト50</h1>
+  <h1>MNP初心者向け Q&amp;A ベスト50</h1>
   <div class="subtitle">タップすると回答が開きます</div>
   <div class="author">やっぴ〜＠MNP×クレカの戦略家（＠8p_thankyou）</div>
 </div>
